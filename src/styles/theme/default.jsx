@@ -5,6 +5,7 @@ export default {
     secondary: '#e4e7f4',
     third: '#9198af',
     dark: '#2a2d3b',
+    gray: '#c0c3d2',
   },
   button: {
     primary: '#dbff90',
