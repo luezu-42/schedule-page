@@ -1,7 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
 
-import { Container } from './styles';
+import HeaderList from '../headerList/index';
+import { Container, Contacts } from './styles';
 
 const List = (props) => {
   const [list, setList] = useState([]);
@@ -18,15 +19,8 @@ const List = (props) => {
   }, [list]);
   return (
     <Container>
-      {list.map((e) => (
-        <div>
-          {e.name}
-          {e.tel}
-        </div>
-      ))}
-      <button type="button" onClick={() => list.splice(list.length - 1, 1)}>
-        teste
-      </button>
+      <HeaderList />
+      <Contacts>teste</Contacts>
     </Container>
   );
 };
