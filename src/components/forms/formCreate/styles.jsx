@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   top: 0px;
+  left: 0px;
   position: absolute;
   display: ${(props) => props.display};
   justify-content: center;

@@ -1,7 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React, { useState } from 'react';
 
-import Form from '../../form/index';
+import Form from '../../forms/formCreate/index';
 import Button from './styles';
 
 const AddContact = () => {

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import uniq from 'uniqid';
+import React, { useState, useEffect, useContext } from 'react';
 
+import ramdomColor from 'randomcolor';
 import { Container, FormContact } from './styles';
-import Input from '../inputForm/index';
-import CancelBtn from '../buttons/cancel/index';
-import SaveBtn from '../buttons/save/index';
+import Input from '../../inputForm/index';
+import CancelBtn from '../../buttons/cancel/index';
+import SaveBtn from '../../buttons/save/index';
+import FormContext from '../../../contexts/index';
 
-const Form = (props) => {
-  const [view, setView] = useState('none');
+const Form = () => {
+  const { view, setView } = useContext(FormContext);
   const [valid, setValid] = useState(true);
   const [value, setValue] = useState([]);
 
@@ -31,14 +32,10 @@ const Form = (props) => {
       name: name.current.value,
       email: email.current.value,
       tel: tel.current.value,
-      id: uniq(),
+      color: ramdomColor(),
     });
     localStorage.setItem('contacts', JSON.stringify(value));
   };
-
-  useEffect(() => {
-    setView(Object.values(props));
-  }, [props]);
 
   useEffect(() => {
     if (name === '' && email === '' && tel === '') {
@@ -46,11 +43,12 @@ const Form = (props) => {
     }
   }, [value]);
 
+  const Value = () => 'TESTE';
   return (
     <>
       <Container display={view}>
         <FormContact onSubmit={HandleSubmit}>
-          <div>Criar novo contato</div>
+          <div>Editar contato</div>
           <span>
             <Input
               type="text"
@@ -59,6 +57,7 @@ const Form = (props) => {
               onChange={HandleChange}
               name="name"
               id="name"
+              value={Value()}
               req={name === ''}
               refi={name}
             />
@@ -68,6 +67,7 @@ const Form = (props) => {
               cont="Email"
               name="email"
               refi={email}
+              value={Value()}
               req={email === ''}
               onChange={HandleChange}
             />
@@ -79,6 +79,7 @@ const Form = (props) => {
               name="tel"
               req={tel === ''}
               refi={tel}
+              value={Value()}
               onChange={HandleChange}
             />
           </span>

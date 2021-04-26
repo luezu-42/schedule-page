@@ -5,7 +5,18 @@ import React from 'react';
 import { Label, InputS } from './styles';
 
 const Input = (props) => {
-  const { type, html, cont, pattern, onChange, name, id, refi, req } = props;
+  const {
+    type,
+    html,
+    cont,
+    pattern,
+    onChange,
+    name,
+    id,
+    refi,
+    req,
+    value,
+  } = props;
 
   return (
     <Label htmlFor={html}>
@@ -18,6 +29,7 @@ const Input = (props) => {
         id={id}
         ref={refi}
         required={req}
+        defaultValue={value}
       />
     </Label>
   );
