@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home/index';
-import TesteContext from './contexts/index';
+import { ContextPr } from './contexts/index';
+import { PopUp } from './contexts/PopUpForm/index';
 
 import GlobalStyle from './styles/GlobalStyles';
 import def from './styles/theme/default';
 
-const App = () => {
-  const [view, setView] = useState('none');
-  return (
-    <TesteContext.Provider value={{ view, setView }}>
+const App = () => (
+  <ContextPr>
+    <PopUp>
       <ThemeProvider theme={def}>
         <GlobalStyle />
         <Home />
       </ThemeProvider>
-    </TesteContext.Provider>
-  );
-};
+    </PopUp>
+  </ContextPr>
+);
 
 export default App;

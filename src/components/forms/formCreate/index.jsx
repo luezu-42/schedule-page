@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable operator-linebreak */
+import React, { useState, useContext, useEffect } from 'react';
 import uniq from 'uniqid';
 
 import ramdomColor from 'randomcolor';
@@ -6,48 +7,48 @@ import { Container, FormContact } from './styles';
 import Input from '../../inputForm/index';
 import CancelBtn from '../../buttons/cancel/index';
 import SaveBtn from '../../buttons/save/index';
+import { Context } from '../../../contexts/index';
+import { PopContext } from '../../../contexts/PopUpForm/index';
 
-const Form = (props) => {
-  const [view, setView] = useState('none');
+const Form = () => {
+  const { view, setView } = useContext(PopContext);
+  const { value } = useContext(Context);
   const [valid, setValid] = useState(true);
-  const [value, setValue] = useState([]);
-
-  const name = React.createRef();
-  const email = React.createRef();
-  const tel = React.createRef();
-  const HandleChange = () => {
+  const [saveContact, setSaveContact] = useState({
+    name: '',
+    email: '',
+    tel: '',
+    color: ramdomColor(),
+    id: uniq(),
+  });
+  const HandleChange = (e) => {
+    setSaveContact({ ...saveContact, [e.target.name]: e.target.value });
     setValid(false);
+    if (
+      saveContact.name === '' &&
+      saveContact.email === '' &&
+      saveContact.tel === ''
+    ) {
+      setValid(true);
+    }
   };
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem('contacts')) === null) {
-      setValue([]);
-    }
-    if (JSON.parse(localStorage.getItem('contacts')) != null) {
-      setValue(JSON.parse(localStorage.getItem('contacts')));
-    }
-  }, []);
 
-  const HandleSubmit = () => {
-    value.push({
-      name: name.current.value,
-      email: email.current.value,
-      tel: tel.current.value,
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+    value.push(saveContact);
+    localStorage.setItem('contacts', JSON.stringify(value));
+    setView('none');
+  };
+
+  useEffect(() => {
+    setSaveContact({
+      name: '',
+      email: '',
+      tel: '',
       color: ramdomColor(),
       id: uniq(),
     });
-    localStorage.setItem('contacts', JSON.stringify(value));
-  };
-
-  useEffect(() => {
-    setView(Object.values(props));
-  }, [props]);
-
-  useEffect(() => {
-    if (name === '' && email === '' && tel === '') {
-      setValid(true);
-    }
-  }, [value]);
-
+  }, [view]);
   return (
     <>
       <Container display={view}>
@@ -61,16 +62,14 @@ const Form = (props) => {
               onChange={HandleChange}
               name="name"
               id="name"
-              req={name === ''}
-              refi={name}
+              req={false}
             />
             <Input
               type="email"
               html="email"
               cont="Email"
               name="email"
-              refi={email}
-              req={email === ''}
+              req={false}
               onChange={HandleChange}
             />
             <Input
@@ -79,8 +78,7 @@ const Form = (props) => {
               cont="Telefone"
               pattern="^\([1-9]{2}\)[0-9]{4,5}-[0-9]{4}$"
               name="tel"
-              req={tel === ''}
-              refi={tel}
+              req={false}
               onChange={HandleChange}
             />
           </span>

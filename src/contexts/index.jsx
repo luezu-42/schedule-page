@@ -1,5 +1,25 @@
-import { createContext } from 'react';
+import React, { createContext, useState } from 'react';
+import api from '../api/index';
 
-const TesteContext = createContext();
+export const Context = createContext();
 
-export default TesteContext;
+// eslint-disable-next-line react/prop-types
+export const ContextPr = ({ children }) => {
+  const [value, setValue] = useState(api());
+  const Filter = () => {
+    if (value === null) {
+      setValue([]);
+    }
+  };
+  Filter();
+  return (
+    <Context.Provider
+      value={{
+        value,
+        setValue,
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
+};

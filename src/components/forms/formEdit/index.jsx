@@ -1,52 +1,44 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useContext } from 'react';
 
-import ramdomColor from 'randomcolor';
 import { Container, FormContact } from './styles';
 import Input from '../../inputForm/index';
 import CancelBtn from '../../buttons/cancel/index';
 import SaveBtn from '../../buttons/save/index';
-import FormContext from '../../../contexts/index';
+import { Context } from '../../../contexts/index';
+import { PopContext } from '../../../contexts/PopUpForm/index';
+import { OptionsContext } from '../../../contexts/EditDelete/index';
 
 const Form = () => {
-  const { view, setView } = useContext(FormContext);
+  const { edit, setEdit } = useContext(PopContext);
+  const { value } = useContext(Context);
+  const { contact } = useContext(OptionsContext);
   const [valid, setValid] = useState(true);
-  const [value, setValue] = useState([]);
 
   const name = React.createRef();
   const email = React.createRef();
   const tel = React.createRef();
   const HandleChange = () => {
     setValid(false);
-  };
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem('contacts')) === null) {
-      setValue([]);
-    }
-    if (JSON.parse(localStorage.getItem('contacts')) != null) {
-      setValue(JSON.parse(localStorage.getItem('contacts')));
-    }
-  }, []);
-
-  const HandleSubmit = () => {
-    value.push({
-      name: name.current.value,
-      email: email.current.value,
-      tel: tel.current.value,
-      color: ramdomColor(),
-    });
-    localStorage.setItem('contacts', JSON.stringify(value));
-  };
-
-  useEffect(() => {
     if (name === '' && email === '' && tel === '') {
       setValid(true);
     }
-  }, [value]);
+  };
+  const HandleSubmit = () => {
+    const del = value.filter((e) => e.id !== contact.id);
+    del.push({
+      name: name.current.value,
+      email: email.current.value,
+      tel: tel.current.value,
+      color: contact.color,
+      id: contact.id,
+    });
+    localStorage.setItem('contacts', JSON.stringify(del));
+  };
 
-  const Value = () => 'TESTE';
   return (
     <>
-      <Container display={view}>
+      <Container display={edit}>
         <FormContact onSubmit={HandleSubmit}>
           <div>Editar contato</div>
           <span>
@@ -57,7 +49,7 @@ const Form = () => {
               onChange={HandleChange}
               name="name"
               id="name"
-              value={Value()}
+              value={contact.name}
               req={name === ''}
               refi={name}
             />
@@ -67,7 +59,7 @@ const Form = () => {
               cont="Email"
               name="email"
               refi={email}
-              value={Value()}
+              value={contact.email}
               req={email === ''}
               onChange={HandleChange}
             />
@@ -79,14 +71,14 @@ const Form = () => {
               name="tel"
               req={tel === ''}
               refi={tel}
-              value={Value()}
+              value={contact.tel}
               onChange={HandleChange}
             />
           </span>
           <span id="bnt-fix">
             <CancelBtn
               text="Cancelar"
-              onClick={() => setView('none')}
+              onClick={() => setEdit('none')}
               type="button"
             />
             <SaveBtn text="Salvar" type="submit" valid={valid} />

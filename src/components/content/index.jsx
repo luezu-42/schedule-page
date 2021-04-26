@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import Container from './styles';
 
 import List from '../listContact/index';
 import EmptyContact from '../emptyContacts/index';
+import { Context } from '../../contexts/index';
 
 const Content = () => {
-  const [contact, setContact] = useState([]);
-
-  const data = () => {
-    const response = localStorage.getItem('contacts');
-    setContact(response);
-  };
-
-  useEffect(() => {
-    data();
-  }, [contact]);
+  const { value } = useContext(Context);
 
   return (
     <Container>
-      {contact === null ? <EmptyContact /> : <List list={contact} />}
+      {value === null || value.length === 0 ? (
+        <EmptyContact />
+      ) : (
+        <List list={value} />
+      )}
     </Container>
   );
 };

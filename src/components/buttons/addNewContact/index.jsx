@@ -1,11 +1,12 @@
 /* eslint-disable implicit-arrow-linebreak */
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import Form from '../../forms/formCreate/index';
 import Button from './styles';
+import { PopContext } from '../../../contexts/PopUpForm/index';
 
 const AddContact = () => {
-  const [view, setView] = useState('none');
+  const { view, setView } = useContext(PopContext);
 
   return (
     <>
