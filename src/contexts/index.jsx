@@ -5,18 +5,18 @@ export const Context = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const ContextPr = ({ children }) => {
-  const [value, setValue] = useState(api());
+  const [data, setData] = useState(api());
   const Filter = () => {
-    if (value === null) {
-      setValue([]);
+    if (data === null) {
+      setData([]);
     }
   };
   Filter();
   return (
     <Context.Provider
       value={{
-        value,
-        setValue,
+        data,
+        setData,
       }}
     >
       {children}

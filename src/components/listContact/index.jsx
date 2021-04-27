@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -19,11 +20,10 @@ import { Container, Contacts, Icon, Options } from './styles';
 
 const List = () => {
   const { edit, setEdit, del, setDel } = useContext(PopContext);
-  const { value } = useContext(Context);
+  const { data } = useContext(Context);
   const { setContact } = useContext(OptionsContext);
-  // eslint-disable-next-line no-unused-vars
 
-  const OrderByName = value.sort((a, b) => {
+  const OrderByName = data.sort((a, b) => {
     if (String(a.name).toUpperCase() > String(b.name).toUpperCase()) {
       return 1;
     }
@@ -33,12 +33,12 @@ const List = () => {
     return 0;
   });
   const FilterDelete = (id, af) => {
-    const delData = value.filter((e) => e[id] !== af);
+    const delData = data.filter((e) => e[id] !== af);
     setContact(delData);
     setDel('felx');
   };
   const FilterEdit = (id, el) => {
-    const fil = value.filter((e) => e[id] === el);
+    const fil = data.filter((e) => e[id] === el);
     setContact({
       name: fil[0].name,
       email: fil[0].email,
@@ -47,9 +47,10 @@ const List = () => {
       id: fil[0].id,
     });
   };
+
   const HandleEdit = (id, el) => {
-    setEdit('flex');
     FilterEdit(id, el);
+    setEdit('flex');
   };
   return (
     <Container>
@@ -71,7 +72,6 @@ const List = () => {
             />
             <img
               onClick={() => FilterDelete('id', e.id)}
-              onFocus={() => setDel('none')}
               src={Delete}
               alt="Deletar contato"
             />

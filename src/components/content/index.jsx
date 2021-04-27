@@ -7,14 +7,14 @@ import EmptyContact from '../emptyContacts/index';
 import { Context } from '../../contexts/index';
 
 const Content = () => {
-  const { value } = useContext(Context);
+  const { data } = useContext(Context);
 
   return (
     <Container>
-      {value === null || value.length === 0 ? (
+      {data === null || data.length === 0 ? (
         <EmptyContact />
       ) : (
-        <List list={value} />
+        <List list={data} />
       )}
     </Container>
   );

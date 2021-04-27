@@ -11,7 +11,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const FormDelete = styled.form`
+export const FormDelete = styled.div`
   width: 432px;
   height: 207px;
   border-radius: 16px;
