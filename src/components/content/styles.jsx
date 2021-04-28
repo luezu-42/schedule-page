@@ -14,6 +14,11 @@ const Container = styled.nav`
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  @media (max-width: 1280px) {
+    padding-right: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 `;
 
 export default Container;

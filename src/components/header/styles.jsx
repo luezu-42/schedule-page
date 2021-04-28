@@ -4,7 +4,7 @@ import Search from '../../assets/ic-search.svg';
 
 export const Container = styled.nav`
   grid-area: 'HD';
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   align-items: center;
   margin: 0px 16px;
@@ -14,14 +14,25 @@ export const Container = styled.nav`
 export const LogoImg = styled.img`
   height: 32px;
   width: 148px;
-  @media (max-width: 1440px) {
+  margin-left: 35px;
+  margin-right: 10px;
+  @media (max-width: 1399px) {
     margin-right: 20px;
+  }
+  @media (min-width: 1443px) {
+    margin-right: 40px;
+    margin-left: -80px;
+  }
+  @media (max-width: 1280px) {
+    margin-right: 10px;
+    margin-left: 20px;
   }
 `;
 
 export const SearchBar = styled.div`
   width: 1032px;
   height: 32px;
+  margin-left: -40px;
   color: ${(props) => props.theme.colors.third};
   > input {
     width: 1032px;
@@ -32,6 +43,7 @@ export const SearchBar = styled.div`
     background-image: url(${Search});
     background-repeat: no-repeat;
     background-position: 99%;
+    margin-left: 30px;
     :focus {
       background-color: ${(props) => props.theme.content.white};
       border: solid 1px lightgray;
@@ -43,6 +55,10 @@ export const SearchBar = styled.div`
     :-ms-input-placeholder {
       color: ${(props) => props.theme.colors.third};
     }
+  }
+  @media (min-width: 1443px) {
+    margin-right: -50px;
+    margin-left: 10px;
   }
   @media (max-width: 1440px) {
     > input {
@@ -76,6 +92,10 @@ export const Contact = styled.div`
   @media (max-width: 1440px) {
     width: 932px;
     margin-left: 55px;
+  }
+  @media (min-width: 1443px) {
+    margin-right: -30px;
+    margin-left: 30px;
   }
 `;
 

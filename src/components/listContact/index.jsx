@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable object-curly-newline */
@@ -54,45 +55,57 @@ const List = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const dataC = data.filter((e) => {
+      const HighlightContacts = data.filter((e) => {
         if (e.newContact === true) {
           return 1;
         }
         return 0;
       });
-      if (dataC === undefined || null || dataC.length === 0) {
+      if (
+        HighlightContacts === undefined ||
+        null ||
+        HighlightContacts.length === 0
+      ) {
         return;
       }
-      if (dataC.length !== 0 || dataC !== null || dataC !== undefined) {
-        const dataD = data.filter((e) => {
-          if (dataC.id !== e.id) {
+      if (
+        HighlightContacts.length !== 0 ||
+        HighlightContacts !== null ||
+        HighlightContacts !== undefined
+      ) {
+        const OldContactList = data.filter((e) => {
+          if (HighlightContacts.id !== e.id) {
             return 1;
           }
           return 0;
         });
-        if (dataD.length !== 0 || dataD !== null || dataD !== undefined) {
-          const dataG = data.filter((e) => {
-            if (dataC[0].id !== e.id) {
+        if (
+          OldContactList.length !== 0 ||
+          OldContactList !== null ||
+          OldContactList !== undefined
+        ) {
+          const OtherHighlights = data.filter((e) => {
+            if (HighlightContacts[0].id !== e.id) {
               return 1;
             }
             return 0;
           });
-          const dataE = data.filter((e) => {
-            if (dataC[0].id === e.id) {
+          const HighlightOff = data.filter((e) => {
+            if (HighlightContacts[0].id === e.id) {
               return 1;
             }
             return 0;
           });
-          dataG.push({
-            name: dataE[0].name,
-            email: dataE[0].email,
-            tel: dataE[0].tel,
-            color: dataE[0].color,
-            id: dataE[0].id,
+          OtherHighlights.push({
+            name: HighlightOff[0].name,
+            email: HighlightOff[0].email,
+            tel: HighlightOff[0].tel,
+            color: HighlightOff[0].color,
+            id: HighlightOff[0].id,
             newContact: false,
           });
-          localStorage.setItem('contacts', JSON.stringify(dataG));
-          setData(dataG);
+          localStorage.setItem('contacts', JSON.stringify(OtherHighlights));
+          setData(OtherHighlights);
         }
       }
     }, 10000);
