@@ -4,7 +4,7 @@ import Container from './styles';
 
 import List from '../listContact/index';
 import EmptyContact from '../emptyContacts/index';
-import { Context } from '../../contexts/index';
+import { Context } from '../../contexts/listContact/index';
 
 const Content = () => {
   const { data } = useContext(Context);

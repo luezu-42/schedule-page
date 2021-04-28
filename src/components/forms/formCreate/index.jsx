@@ -8,7 +8,7 @@ import { Container, FormContact } from './styles';
 import Input from '../../inputForm/index';
 import CancelBtn from '../../buttons/cancel/index';
 import SaveBtn from '../../buttons/save/index';
-import { Context } from '../../../contexts/index';
+import { Context } from '../../../contexts/listContact/index';
 import { PopContext } from '../../../contexts/PopUpForm/index';
 
 const Form = () => {

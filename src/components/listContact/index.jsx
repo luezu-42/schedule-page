@@ -11,7 +11,7 @@ import DeleteForm from '../forms/formDelete/index';
 import ListTitle from '../listTitle/index';
 import Edit from '../../assets/ic-edit.svg';
 import Delete from '../../assets/ic-delete.svg';
-import { Context } from '../../contexts/index';
+import { Context } from '../../contexts/listContact/index';
 import { PopContext } from '../../contexts/PopUpForm/index';
 import { OptionsContext } from '../../contexts/EditDelete/index';
 import { Container, Contacts, Icon, Options } from './styles';

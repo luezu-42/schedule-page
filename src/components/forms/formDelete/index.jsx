@@ -5,7 +5,7 @@ import { PopContext } from '../../../contexts/PopUpForm/index';
 import { Container, FormDelete } from './styles';
 import CancelBtn from '../../buttons/cancel/index';
 import SaveBtn from '../../buttons/save/index';
-import { Context } from '../../../contexts/index';
+import { Context } from '../../../contexts/listContact/index';
 
 const DeleteForm = () => {
   const { setData } = useContext(Context);

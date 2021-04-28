@@ -7,7 +7,7 @@ import Logo from '../../assets/ic-logo.svg';
 import { Container, LogoImg, SearchBar, Contact, Icon } from './styles';
 import Button from '../buttons/addNewContact/index';
 
-import { Context } from '../../contexts/index';
+import { Context } from '../../contexts/listContact/index';
 
 const Header = () => {
   const { data } = useContext(Context);

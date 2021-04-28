@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home/index';
-import { ContextPr } from './contexts/index';
+import { ContextPr } from './contexts/listContact/index';
 import { PopUp } from './contexts/PopUpForm/index';
 
 import GlobalStyle from './styles/GlobalStyles';
