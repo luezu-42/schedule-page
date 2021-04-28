@@ -10,6 +10,9 @@ const Container = styled.div`
   > div {
     margin-top: 16px;
   }
+  @media (max-width: 1440px) {
+    grid-template-columns: 42px 310px 360px 400px 60px;
+  }
 `;
 
 export default Container;

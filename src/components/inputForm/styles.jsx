@@ -6,7 +6,7 @@ export const Label = styled.label`
   color: ${(props) => props.theme.colors.dark};
 `;
 
-export const Inputs = styled.input`
+export const InpuT = styled.input`
   font-weight: 500;
   font-size: 14px;
   color: ${(props) => props.theme.colors.dark};

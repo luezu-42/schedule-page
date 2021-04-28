@@ -7,6 +7,13 @@ const Container = styled.nav`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 1440px) {
+    padding-left: 0px;
+    padding-right: 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 `;
 
 export default Container;

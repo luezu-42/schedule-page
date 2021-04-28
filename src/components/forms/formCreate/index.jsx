@@ -1,10 +1,6 @@
 /* eslint-disable object-curly-newline */
-/* eslint-disable no-undef */
-/* eslint-disable spaced-comment */
-/* eslint-disable no-unused-vars */
-/* eslint-disable operator-linebreak */
-import React, { useState, useContext, useEffect } from 'react';
-import uniq from 'uniqid';
+import React, { useContext } from 'react';
+import uniq from 'lodash.uniqueid';
 import ramdomColor from 'randomcolor';
 import { Formik } from 'formik';
 
@@ -20,14 +16,20 @@ const Form = () => {
   const { data, setData } = useContext(Context);
   const HandleSubmit = (values, actions) => {
     const arr = [...data];
-    data.push(values);
-    arr.push(values);
-    localStorage.setItem('contacts', JSON.stringify(data));
+    const iduniq = uniq() + Date.now();
+    arr.push({
+      name: values.name,
+      email: values.email,
+      tel: values.tel,
+      color: ramdomColor(),
+      id: iduniq,
+      newContact: true,
+    });
+    localStorage.setItem('contacts', JSON.stringify(arr));
     setView('none');
     setData(arr);
     actions.resetForm();
   };
-
   return (
     <>
       <Container display={view}>
@@ -37,8 +39,6 @@ const Form = () => {
             name: '',
             email: '',
             tel: '',
-            color: ramdomColor(),
-            id: uniq(),
           }}
         >
           {({ values, handleChange, handleSubmit, dirty }) => (
@@ -51,7 +51,6 @@ const Form = () => {
                   cont="Nome"
                   onChange={handleChange}
                   name="name"
-                  id="name"
                   value={values.name}
                 />
                 <Input

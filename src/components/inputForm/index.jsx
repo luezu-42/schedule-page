@@ -2,20 +2,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { Label, Inputs } from './styles';
+import { Label, InpuT } from './styles';
 
 const Input = (props) => {
-  const { type, html, cont, pattern, onChange, name, id, value } = props;
+  const { type, html, cont, pattern, onChange, name, value } = props;
 
   return (
     <Label htmlFor={html}>
       {cont}
-      <Inputs
+      <InpuT
         type={type}
         pattern={pattern}
         onChange={onChange}
         name={name}
-        id={id}
         value={value}
       />
     </Label>

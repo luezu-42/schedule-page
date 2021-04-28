@@ -8,7 +8,6 @@ import { Context } from '../../contexts/index';
 
 const Content = () => {
   const { data } = useContext(Context);
-
   return (
     <Container>
       {data === null || data.length === 0 ? (

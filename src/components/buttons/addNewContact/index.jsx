@@ -1,4 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
 import React, { useContext } from 'react';
 
 import Form from '../../forms/formCreate/index';

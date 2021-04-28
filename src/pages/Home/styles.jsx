@@ -7,6 +7,10 @@ const Container = styled.div`
     'HD'
     'CT';
   height: 100vh;
+  @media (max-width: 1440px) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 `;
 
 export default Container;

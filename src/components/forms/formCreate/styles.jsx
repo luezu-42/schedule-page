@@ -9,6 +9,7 @@ export const Container = styled.div`
   position: absolute;
   display: ${(props) => props.display};
   justify-content: center;
+  z-index: 1000;
 `;
 
 export const FormContact = styled.form`

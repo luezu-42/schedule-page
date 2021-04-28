@@ -10,6 +10,7 @@ export const Options = ({ children }) => {
     tel: '',
     color: '',
     id: '',
+    newContact: false,
   });
   return (
     <OptionsContext.Provider value={{ contact, setContact }}>

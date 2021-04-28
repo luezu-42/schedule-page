@@ -15,6 +15,14 @@ const Button = styled.button`
   padding-left: 20px;
   font-weight: 500;
   color: ${(props) => props.theme.button.secondary};
+  @media (max-width: 1440px) {
+    align-items: center;
+    justify-content: center;
+    width: 104px;
+    height: 35px;
+    background-size: 12px;
+    font-size: 12px;
+  }
 `;
 
 export default Button;

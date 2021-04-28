@@ -1,9 +1,4 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable no-undef */
-/* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
 import React, { useContext, useState, useEffect } from 'react';
 import { Formik } from 'formik';
 
@@ -35,6 +30,7 @@ const Form = () => {
       tel: value.tel,
       color: contact.color,
       id: contact.id,
+      newContact: false,
     });
     localStorage.setItem('contacts', JSON.stringify(del));
     setEdit('none');
@@ -63,7 +59,6 @@ const Form = () => {
                   cont="Nome"
                   onChange={handleChange}
                   name="name"
-                  id="name"
                   value={values.name}
                 />
                 <Input

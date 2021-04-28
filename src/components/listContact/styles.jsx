@@ -7,6 +7,9 @@ export const Container = styled.div`
   width: 1408px;
   border: solid 1px ${(props) => props.theme.content.border};
   background-color: ${(props) => props.theme.content.white};
+  @media (max-width: 1440px) {
+    width: 1208px;
+  }
 `;
 
 export const Contacts = styled.div`
@@ -15,11 +18,18 @@ export const Contacts = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: ${(props) => props.highlight};
   color: ${(props) => props.theme.colors.dark};
   border-top: solid 1px ${(props) => props.theme.content.border};
-
+  overflow: hidden;
   :hover {
     background-color: ${(props) => props.theme.content.primary};
+  }
+  @media (max-width: 1440px) {
+    grid-template-columns: 42px 310px 360px 425px 60px;
   }
 `;
 

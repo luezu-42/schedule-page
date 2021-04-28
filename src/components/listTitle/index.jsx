@@ -2,7 +2,7 @@ import React from 'react';
 
 import Container from './styles';
 
-const HeaderList = () => (
+const listTitle = () => (
   <Container>
     <hr />
     <div>Contatos</div>
@@ -12,4 +12,4 @@ const HeaderList = () => (
   </Container>
 );
 
-export default HeaderList;
+export default listTitle;
