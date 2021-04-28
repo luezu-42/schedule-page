@@ -1,5 +1,5 @@
 export default {
-  title: 'def',
+  title: 'defaultTheme',
   colors: {
     primary: '#f8f9fd',
     secondary: '#e4e7f4',

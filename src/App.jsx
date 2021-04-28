@@ -6,12 +6,12 @@ import { ContextPr } from './contexts/index';
 import { PopUp } from './contexts/PopUpForm/index';
 
 import GlobalStyle from './styles/GlobalStyles';
-import def from './styles/theme/default';
+import defaultTheme from './styles/theme/default';
 
 const App = () => (
   <ContextPr>
     <PopUp>
-      <ThemeProvider theme={def}>
+      <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <Home />
       </ThemeProvider>

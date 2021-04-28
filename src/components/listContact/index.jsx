@@ -30,13 +30,13 @@ const List = () => {
     }
     return 0;
   });
-  const HandleDelete = (id, af) => {
+  const handleDelete = (id, af) => {
     const delData = data.filter((e) => e[id] !== af);
     setContact(delData);
     setDel('flex');
   };
 
-  const FilterEdit = (id, el) => {
+  const filterEdit = (id, el) => {
     const fil = data.filter((e) => e[id] === el);
     setContact({
       name: fil[0].name,
@@ -47,8 +47,8 @@ const List = () => {
       newContact: false,
     });
   };
-  const HandleEdit = (id, el) => {
-    FilterEdit(id, el);
+  const handleEdit = (id, el) => {
+    filterEdit(id, el);
     setEdit('flex');
   };
 
@@ -123,10 +123,10 @@ const List = () => {
             <img
               src={Edit}
               alt="Editar contato"
-              onClick={() => HandleEdit('id', e.id)}
+              onClick={() => handleEdit('id', e.id)}
             />
             <img
-              onClick={() => HandleDelete('id', e.id)}
+              onClick={() => handleDelete('id', e.id)}
               src={Delete}
               alt="Deletar contato"
             />

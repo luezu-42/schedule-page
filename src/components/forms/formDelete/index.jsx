@@ -12,7 +12,7 @@ const DeleteForm = () => {
   const { contact } = useContext(OptionsContext);
   const { del, setDel } = useContext(PopContext);
   const valid = false;
-  const HandleSubmit = () => {
+  const handleSubmit = () => {
     localStorage.setItem('contacts', JSON.stringify(contact));
     setData(contact);
     setDel('none');
@@ -33,7 +33,7 @@ const DeleteForm = () => {
             text="Deletar"
             type="submit"
             valid={valid}
-            onClick={HandleSubmit}
+            onClick={handleSubmit}
           />
         </span>
       </FormDelete>
